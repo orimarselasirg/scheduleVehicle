@@ -1,6 +1,5 @@
 import React from 'react';
-import Timer from './Timer'
-import { addTimer } from '../redux/action';
+import Timer from '../Timer/Timer'
 import {useDispatch} from 'react-redux'
 import {useState} from 'react'
 
@@ -33,9 +32,9 @@ function CardsTimer(props) {
             <label>Bahia</label>
             <input type='text' placeholder ='Placas del vehiculos' name = 'driver'onChange={inputChanger}/>
             <label>Conductor</label>
-            <input type="button" value="Set Timer" onClick={activateTimer} />       
+            <input className = 'button is-small is-dark' type="button" value="Set Timer" onClick={activateTimer} />       
             </form>
-            <div>
+            <div className='container'>
                 {
                     vehicle?.map(e =>(
                         <Timer key={e.id_vechile} id_vehicle = {e.id_vehicle} pit={e.pit} driver = {e.driver}/>

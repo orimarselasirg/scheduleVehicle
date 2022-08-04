@@ -1,12 +1,14 @@
 import React from "react";
 import { NavLink} from "react-router-dom";
+import './nav.css'
 
 function Nav(props) {
   return (
-    <div className="navbar is-dark">
-        <div className="navbar-brand">
+    <div className="navbar is-white">
+      <div className="navbar-item logo">
+          {/* <span className="navbar-brand logo"/> */}
 
-        </div>
+      </div>
       <NavLink to ='/home'  className="navbar-item">
         <span>Home</span>
       </NavLink>

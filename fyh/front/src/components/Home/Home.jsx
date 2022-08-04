@@ -1,8 +1,8 @@
 import React from "react";
-import CardsTimer from "./CardsTimer";
-import Nav from "./Nav";
-import Register from './Register'
-import Homepage from "./Homepage";
+import CardsTimer from "../CardsTimer/CardsTimer";
+import Nav from "../Nav/Nav"
+import Register from '../Register/Register'
+import Homepage from "../Homepage/Homepage";
 import { NavLink, Routes, Route } from "react-router-dom";
 
 function Home(props) {

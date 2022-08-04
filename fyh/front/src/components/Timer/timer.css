@@ -1,0 +1,8 @@
+.button {
+    margin: 5px;
+}
+
+.block:not(:last-child) {
+    /* margin-top: 1 rem; */
+    margin-bottom: 1.5rem;
+  }
