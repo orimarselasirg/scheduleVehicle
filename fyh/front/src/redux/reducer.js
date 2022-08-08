@@ -1,4 +1,4 @@
-import { START, ADD_TIMER } from "./constans"
+import { START, ADD_TIMER, FINISH_TIMER } from "./constans"
 
 
 const initialState = {
@@ -10,6 +10,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 timers : [...state.timers, action.payload]
+            }
+        case FINISH_TIMER :
+            return {
+                ...state,
+                timers : state.timers.filter(e => e.id_vehicle !== action.payload)
             }
         default:
             return state
