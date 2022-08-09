@@ -29,10 +29,14 @@
     height: 84px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
   .form-input{
     width: 230px;
   }
+
+  /* .state {
+    background-color: red;
+  } */

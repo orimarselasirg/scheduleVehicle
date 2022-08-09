@@ -3,18 +3,37 @@ import { useStopwatch } from "react-timer-hook";
 import {useState} from 'react'
 import {finishTimer } from '../../redux/action';
 import {useDispatch} from 'react-redux'
+import { inputChanger } from "../../controllers/inputHandlers";
+import { validator } from "../../controllers/validator";
 import './timer.css'
 
 function Timer({id_vehicle, pit, driver, tecnician}) {
     const {seconds,minutes,hours,isRunning,start,pause,reset} = useStopwatch({ autoStart: false });
     const dispatch = useDispatch()
-    const date = new Date()
-    const timestamp = +new Date();
-    const tttt = new Date(timestamp)
-
+    const [error, setError] = useState({})
+    const [data, setData] = useState ({
+      kilometers : 0,
+      type : '',
+      datetime : '',
+      time : ''
+    })
+    const time = `${hours}:${minutes}:${seconds}`
+    // const date = new Date()
+    // const timestamp = +new Date();
+    // const tttt = new Date(timestamp)
+    
+    
     const sendData = () =>{
+      if(data.kilometers === 0 || data.type === '' || data.datetime === '') return alert('Por favor completa los campos obligatorios')
+      pause()
+        setData({
+          ...data, 
+          time : time
+        })
       dispatch(finishTimer(id_vehicle))
     }
+    
+    
   
   return (
     <div className="card block">
@@ -30,18 +49,18 @@ function Timer({id_vehicle, pit, driver, tecnician}) {
           <div>
             <span className='tag is-large title-tag'>TIME :</span>
             <div className='tag is-info is-large time'>
-              <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+              <span name = 'time' onChange={(e) => setData({time : e.time})} >{time}</span>
             </div>          
           </div>
-          <p>{isRunning ? "On pits" : "Oops! What Happen?"}</p>
+          <p className="state">{isRunning ? "On pits" : "Oops! What Happen?"}</p>
         </div>
         <div className = 'form-input'>
             <form>
-              <input className="input is-small" type="text" placeholder="Kilometraje" />
-              <input className="input is-small" type="text" placeholder="Tipo Vehiculo" />
+              <input className="input is-small" type="text" placeholder="Kilometraje" required name = 'kilometers' onChange={(e) => inputChanger(setError, validator, setData, data, e.target.name, e.target.value)}/>
+              <input className="input is-small" type="text" placeholder="Tipo Vehiculo" required name = 'type' onChange={(e) => inputChanger(setError, validator, setData, data, e.target.name, e.target.value)}/>
+              <input className="input is-small tag is-success is-light" type="datetime-local" required name = 'datetime' onChange={(e) => inputChanger(setError, validator, setData, data, e.target.name, e.target.value)}/>
             </form>
-            <p>{date.toISOString().split('T')[0]}</p>
-            <p>{}</p>
+            {/* <p>{date.toISOString().split('T')[0]}</p> */}
         </div>
       </div>
       <div className="card-footer buttons are-small">
