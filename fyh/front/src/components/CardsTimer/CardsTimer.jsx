@@ -5,6 +5,7 @@ import { addTimer} from '../../redux/action';
 import {useState, useEffect} from 'react'
 import { inputChanger } from '../../controllers/inputHandlers';
 import { validator } from '../../controllers/validator';
+import swal from 'sweetalert'
 import './cardstimer.css'
 
 function CardsTimer(props) {
@@ -18,14 +19,18 @@ function CardsTimer(props) {
         driver: '',
         tecnician : ''
     })
-    // useEffect(() => {
-    //     validator(data)
-    // },[])
+
     function activateTimer(){
         if(error.length > 0) return alert(`tienes un campo con errores`)
         if(data.id_vehicle === '' || data.pit === '' || data.driver === '' || data.tecnician === '') return alert('no puedes tener campos vacios')
         if(timers.find(e => e.id_vehicle === data.id_vehicle)){
-            alert(`El vehiculo con placas ${data.id_vehicle} ya esta en los Pits`)
+            // alert(`El vehiculo con placas ${data.id_vehicle} ya esta en los Pits`)
+            swal({
+                title: "ATENCIÓN",
+                text: `El vehiculo con placas ${data.id_vehicle} ya esta en los Pits`,
+                icon: "error",
+                button: "Ok",
+              });
         } else {
             dispatch(addTimer(data))
             setData({  
