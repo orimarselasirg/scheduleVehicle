@@ -70,7 +70,7 @@ function CardsTimer(props) {
                         {error.tecnician && <p className='has-text-danger is-size-7'>{error.tecnician}</p>}
                     </div>
                 </div>
-                {data.id_vehicle === '' || data.pit === '' || data.driver === '' || data.tecnician === '' ? <input className = 'button is-small is-dark' type="button" value="Set Timer" disabled/> : <input className = 'button is-small is-dark' type="button" value="Set Timer" onClick={activateTimer}/>}
+                {data.id_vehicle === '' || data.pit === '' || data.driver === '' || data.tecnician === '' || error.pit ? <input className = 'button is-small is-dark' type="button" value="Set Timer" disabled/> : <input className = 'button is-small is-dark' type="button" value="Set Timer" onClick={activateTimer}/>}
             </form>
             <div className='container'>
                 {
