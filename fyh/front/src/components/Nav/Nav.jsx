@@ -18,6 +18,9 @@ function Nav(props) {
       <NavLink to = '/pits' className="navbar-item">
         <span >On Pits</span>
       </NavLink>
+      <NavLink to = '/timerlist' className="navbar-item">
+        <span >Timers List</span>
+      </NavLink>
     </div>
   );
 }

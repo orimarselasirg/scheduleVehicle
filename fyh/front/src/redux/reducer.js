@@ -1,8 +1,9 @@
-import { START, ADD_TIMER, FINISH_TIMER } from "./constans"
+import {ADD_TIMER, FINISH_TIMER, GET_ALL_VEHICLES, CREATE_VEHICLE } from "./constans"
 
 
 const initialState = {
     timers: [],
+    vehicles : []
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -15,6 +16,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 timers : state.timers.filter(e => e.id_vehicle !== action.payload)
+            }
+        case GET_ALL_VEHICLES :
+            return {
+                ...state,
+                vehicles : action.payload
             }
         default:
             return state

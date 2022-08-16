@@ -3,6 +3,7 @@ import { useStopwatch } from "react-timer-hook";
 import {useState} from 'react'
 import {finishTimer } from '../../redux/action';
 import {useDispatch} from 'react-redux'
+import { createVehicle } from "../../redux/action";
 import { inputChanger } from "../../controllers/inputHandlers";
 import { validator } from "../../controllers/validator";
 import swal from 'sweetalert'
@@ -33,6 +34,7 @@ function Timer({id_vehicle, pit, driver, tecnician}) {
           ...data, 
           time : time
         })
+      dispatch(createVehicle(id_vehicle))
       dispatch(finishTimer(id_vehicle))
     }
     
