@@ -1,0 +1,6 @@
+.block:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+.control{
+    margin-right: 2px;
+}

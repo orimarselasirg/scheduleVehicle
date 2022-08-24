@@ -1,0 +1,42 @@
+/* .button {
+    margin: 5px;
+} */
+
+.block:not(:last-child) {
+    /* margin-top: 1 rem; */
+    margin-bottom: 1.5rem;
+  }
+
+  .time {
+    max-width: 100px;
+    min-width: 90px;
+    width: 10%;
+  }
+  .title-tag{
+    font-weight: bolder;
+  }
+
+  .card-content{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  .prueba{
+    width: 20%;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-input{
+    width: 230px;
+  }
+
+  /* .state {
+    background-color: red;
+  } */

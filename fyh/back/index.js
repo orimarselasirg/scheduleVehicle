@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require("cors")
-const cronometer = require('../back/routes/conometer')
+const vehicle = require('../back/routes/vehicle')
+const timers = require('../back/routes/timers')
 const { sequelize } = require('./db/db')
 const app = express()
 app.use(express.json());
@@ -13,7 +14,8 @@ app.listen(port, () => {
     sequelize.sync({ alter: true })
 })
 
-app.use('/', cronometer)
+app.use('/', vehicle)
+app.use('/', timers)
 
 // app.get('/test', async (req, res) => {
 //     try {
